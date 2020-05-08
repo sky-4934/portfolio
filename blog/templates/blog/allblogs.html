@@ -1,13 +1,14 @@
+
 <!doctype html>
+{% load staticfiles %}
 <html lang="en">
-{% load staticfiles%}
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.6">
-    <title>The_Night_Writer</title>
+    <title>MyBlog</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/album/">
 
@@ -56,47 +57,35 @@
     <div class="navbar-nav ml-auto">
       <a class="nav-item nav-link" href="https://www.instagram.com/the_night__writer/">Instagram </a>
       <a class="nav-item nav-link" href="{% static 'CSE 2.pdf' %}">Resume</a>
-      <a class="nav-item nav-link" href="{% url 'allblogs'%}">Blog</a>
+      <a class="nav-item nav-link active" href="{% url 'allblogs'%}">Blog</a>
     </div>
   </div>
 </nav>
 </header>
 
 <main role="main">
+<div class="container">
+<h1 class="text-center pt-3">Blog</h1>
+<br>
+<br>
+<h2>Latest Posts</h2>
+<hr />
+{% for allblogs in blog.all %}
+<a href="{% url 'detail' allblogs.id%}"><h3>{{allblogs.title}}</h3></a>
+{{allblogs.pub_date_pretty}}
+<br>
+<img class="img-fluid" src = "{{allblogs.image.url }}" height = 200 width = 200/>
+<br>
+<br>
+<p>{{allblogs.summary}}</p>
 
-  <section class="jumbotron text-center">
-    <div class="container">
-      <h1>Hi! I am The_Night_Writer</h1>
-      <p class="lead text-muted">Hello everyone this is my blog which i created in Django</p>
-<p>
-        <a href="mailto:4934akash@gmail.com" class="btn btn-primary my-2">Email Me!</a>
-      </p>
-      <img src="{% static 'photo.jpg' %}"
-    </div>
-  </section>
+{% endfor %}
 
-  <div class="album py-5 bg-light">
-    <div class="container">
 
-      <div class="row">
-      {% for job in jobs.all %}
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <img class = "card mb-4 box-shadow" height=150 src ={{job.image.url}} />
-            <div class="card-body">
-              <p class="card-text" >{{job.summary}}</p> 
-                
-              </div>
-            </div>
-          </div>
-          {% endfor %}
-        </div>
-       
-      </div>
-    </div>
-  </div>
+</div>
 
 </main>
+
 
 <footer class="text-muted">
   <div class="container text-center">
