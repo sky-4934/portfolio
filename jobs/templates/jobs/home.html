@@ -71,18 +71,19 @@
 <p>
         <a href="mailto:4934akash@gmail.com" class="btn btn-primary my-2">Email Me!</a>
       </p>
-      <img src="{% static 'photo.jpg' %}"
+      <img class="rounded-lg shadow p-3"src="{% static 'photo.jpg' %}"
     </div>
+   
   </section>
 
-  <div class="album py-5 bg-light">
+  <div class="album py-5 bg-dark">
     <div class="container">
 
       <div class="row">
       {% for job in jobs.all %}
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
-            <img class = "card mb-4 box-shadow" height=150 src ={{job.image.url}} />
+            <img class="rounded-lg shadow p-3" height=200 src ={{job.image.url}} />
             <div class="card-body">
               <p class="card-text" >{{job.summary}}</p> 
                 
